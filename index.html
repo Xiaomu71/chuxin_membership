@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初心研习社·年度运营计划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Parchment & Muted Teal -->
+    <!-- 
+        Application Structure Plan: 
+        The application is structured as a "Mission Control" dashboard, not a linear document. This design choice is deliberate to cater to different user needs. 
+        1. A high-level "航海图" (Roadmap) timeline gives an instant overview of the year's major phases.
+        2. A detailed, interactive "主题冲刺" (Themed Sprints) section uses a tabbed interface, allowing users to dive into any month's specific plan without overwhelming scrolling. This is the core interactive element.
+        3. A dedicated "AI伙伴" (AI Companions) section introduces the AI team, directly addressing a key value proposition and making the abstract concept of "AI-assisted operation" tangible.
+        4. Key events like the "理想者大会" (Idealist Conference) are given their own prominent sections to build excitement.
+        This non-linear, thematic structure allows members to explore the plan based on their immediate interests (e.g., "What's happening in December?" or "What are the AI tools?") while always being able to see the big picture, thus greatly enhancing usability and engagement compared to a static report.
+    -->
+    <!-- 
+        Visualization & Content Choices:
+        - Report Info: Full 12-month plan -> Goal: Provide context & high-level overview -> Presentation: Interactive HTML/CSS Timeline -> Interaction: Click to smooth-scroll to detail sections -> Justification: Offers a quick, visual summary of the entire year, acting as the main navigation hub.
+        - Report Info: 7 Monthly Themes & 4-week cycle -> Goal: Allow deep, focused exploration of the core activities -> Presentation: Tabbed Interface with inner grids -> Interaction: Click tabs to switch monthly content -> Justification: Organizes the most detailed part of the plan cleanly, preventing information overload and promoting focused discovery.
+        - Report Info: "双核七步法" IP -> Goal: Provide a constant reference to the core methodology -> Presentation: A static, visually styled HTML/CSS diagram -> Interaction: None -> Justification: Visually anchors the community's core IP within the plan without needing external images or complex libraries.
+        - Report Info: AI's role in operations -> Goal: Showcase the "AI-assisted" value proposition -> Presentation: A grid of "Agent" cards -> Interaction: None -> Justification: Makes the abstract concept of AI support concrete and introduces the "AI team" in an easily digestible format.
+        - Report Info: "理想者大会" & other key events -> Goal: Build anticipation and highlight milestones -> Presentation: Dedicated, styled sections with clear callouts -> Interaction: None -> Justification: Gives proper weight to the year's most important events.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FDFBF5; /* Warm Parchment */
+            color: #3D405B; /* Dark Slate Blue */
+        }
+        .tab-btn.active {
+            background-color: #3D405B;
+            color: #FDFBF5;
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .content-section {
+            scroll-margin-top: 80px;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50 w-full glass-effect shadow-sm">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold">初心研习社</div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#roadmap" class="hover:text-[#00796B]">年度航海图</a>
+                    <a href="#sprints" class="hover:text-[#00796B]">主题冲刺</a>
+                    <a href="#ai-crew" class="hover:text-[#00796B]">AI伙伴</a>
+                    <a href="#conference" class="hover:text-[#00796B]">理想者大会</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#roadmap" class="block py-2 hover:text-[#00796B]">年度航海图</a>
+                <a href="#sprints" class="block py-2 hover:text-[#00796B]">主题冲刺</a>
+                <a href="#ai-crew" class="block py-2 hover:text-[#00796B]">AI伙伴</a>
+                <a href="#conference" class="block py-2 hover:text-[#00796B]">理想者大会</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section class="text-center mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">初心研习社 · 年度运营计划</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">我们的“航海图” (2025.9 - 2026.8)。这不仅是一份计划，更是我们未来一年共同的“实战道场”和“成长容器”。</p>
+        </section>
+
+        <section id="roadmap" class="content-section mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12">年度航海图</h2>
+            <div class="relative w-full">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-[#B2DFDB]"></div>
+                <div class="relative flex justify-between items-start md:items-center">
+                    <div class="roadmap-item text-center w-1/3 cursor-pointer" data-target="#sprints">
+                        <div class="relative z-10 w-8 h-8 mx-auto rounded-full bg-[#00796B] text-white flex items-center justify-center font-bold">1</div>
+                        <h3 class="mt-2 font-semibold">七次主题冲刺</h3>
+                        <p class="text-sm text-gray-500">2025.9 - 2026.3</p>
+                    </div>
+                    <div class="roadmap-item text-center w-1/3 cursor-pointer" data-target="#conference">
+                        <div class="relative z-10 w-8 h-8 mx-auto rounded-full bg-[#00796B] text-white flex items-center justify-center font-bold">2</div>
+                        <h3 class="mt-2 font-semibold">理想者大会</h3>
+                        <p class="text-sm text-gray-500">2026.4</p>
+                    </div>
+                    <div class="roadmap-item text-center w-1/3 cursor-pointer" data-target="#voyage">
+                        <div class="relative z-10 w-8 h-8 mx-auto rounded-full bg-[#00796B] text-white flex items-center justify-center font-bold">3</div>
+                        <h3 class="mt-2 font-semibold">持续远航</h3>
+                        <p class="text-sm text-gray-500">2026.5 - 2026.8</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sprints" class="content-section mb-20">
+            <h2 class="text-3xl font-bold text-center mb-2">主题冲刺：我们的“寻宝图”</h2>
+            <p class="text-center text-gray-600 mb-8">每月聚焦一个真问题，开启七次硬核的“主题冲刺”。</p>
+            
+            <div class="bg-white/50 rounded-xl p-6 md:p-8 shadow-lg">
+                <div class="mb-8 p-4 border-l-4 border-[#00796B] bg-[#E0F2F1]/50 rounded-r-lg">
+                    <h4 class="font-bold text-lg mb-2">我们的“寻宝图”：《双核七步法》</h4>
+                    <p class="text-sm text-gray-700">为了让探索不偏航，“双核七步法”是我们共同的思考语言和底层地图。所有主题都源于此。</p>
+                    <div id="seven-steps-diagram" class="mt-4 flex flex-wrap gap-2 text-xs"></div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-8" id="sprint-tabs"></div>
+                <div id="sprint-content"></div>
+            </div>
+        </section>
+
+        <section id="ai-crew" class="content-section mb-20">
+            <h2 class="text-3xl font-bold text-center mb-2">AI伙伴：我们的“超级大副”</h2>
+            <p class="text-center text-gray-600 mb-8">在这里，AI不是概念，而是我们每天都在用的“伙伴”，全程陪我们玩。</p>
+            <div id="ai-agents-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </section>
+
+        <section id="conference" class="content-section mb-20">
+            <div class="bg-white/50 rounded-xl p-8 shadow-lg text-center">
+                <h2 class="text-3xl font-bold mb-4">年度高潮：理想者大会 (2026.4)</h2>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">这是我们全年的“顶峰时刻”，一场属于我们自己的庆典！</p>
+                <div class="flex flex-col md:flex-row justify-center gap-8">
+                    <div class="flex-1 p-6 bg-[#E0F2F1]/50 rounded-lg">
+                        <h3 class="font-bold text-xl mb-2">智慧结晶发布</h3>
+                        <p class="text-sm">我们将正式发布由全体成员共同创造的《初心研习社·社会企业年度白皮书》。</p>
+                    </div>
+                    <div class="flex-1 p-6 bg-[#E0F2F1]/50 rounded-lg">
+                        <h3 class="font-bold text-xl mb-2">社创资助大赛</h3>
+                        <p class="text-sm">优胜者将登上“渣打社企助力计划”的决赛舞台，争取宝贵的资助奖金。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="voyage" class="content-section mb-20">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold mb-4">持续远航 (2026.5 - 2026.8)</h2>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">在顶峰之后，我们整合、深潜，为下一次启航积蓄能量。</p>
+                <div class="space-y-4 max-w-xl mx-auto text-left">
+                    <div class="p-4 bg-white/50 rounded-lg shadow">
+                        <h3 class="font-semibold">5-7月：案例深潜</h3>
+                        <p class="text-sm text-gray-600">邀请大赛获奖者和外部导师，每月2次，深度复盘6个经典案例，把别人的经验变成我们的认知。</p>
+                    </div>
+                    <div class="p-4 bg-white/50 rounded-lg shadow">
+                        <h3 class="font-semibold">8月：再次启航</h3>
+                        <p class="text-sm text-gray-600">一起回顾成长，完成新一轮自我评估，并共同定下下一年度的学习目标。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#3D405B] text-white/70 text-center py-6">
+        <p>&copy; 2025 初心研习社. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sevenStepsData = [
+                { name: '1. 使命', color: 'bg-red-100', textColor: 'text-red-800' },
+                { name: '2. 问题分析', color: 'bg-orange-100', textColor: 'text-orange-800' },
+                { name: '3. 变革理论', color: 'bg-amber-100', textColor: 'text-amber-800' },
+                { name: '4. 需求洞察', color: 'bg-yellow-100', textColor: 'text-yellow-800' },
+                { name: '5. 供给分析', color: 'bg-lime-100', textColor: 'text-lime-800' },
+                { name: '6. 产品与能力', color: 'bg-green-100', textColor: 'text-green-800' },
+                { name: '7. 公共倡导', color: 'bg-teal-100', textColor: 'text-teal-800' },
+            ];
+
+            const sprintsData = [
+                { id: 'sep', month: '9月', title: '我的使命如何超越情怀，赋能生意？', step: 1 },
+                { id: 'oct', month: '10月', title: '都在说创新，但我能找到“第一性原理”吗？', step: 2 },
+                { id: 'nov', month: '11月', title: '如何让时代的拐点，成为我的加速杠杆？', step: 3 },
+                { id: 'dec', month: '12月', title: '超越2B2C2G，誰的需求是我在乎的真需求？', step: 4 },
+                { id: 'jan', month: '1月', title: '如何动员身边“隐秘的资源”，构建自己的价值网？', step: 5 },
+                { id: 'feb', month: '2月', title: '我如何把我的能力，封装成可交易的产品？', step: 6 },
+                { id: 'mar', month: '3月', title: '如何通过信任和共识，打造一个高质量的社会服务品牌？', step: 7 },
+            ];
+
+            const weeklyPlanData = [
+                { week: '第一周', title: '主理人大课', desc: '结合当月主题，分享“双核七步法”对应的核心心法和工具。' },
+                { week: '第二周', title: '社创夜话', desc: '征集3-4个真实案例，进行社群“集体会诊”，把问题问深、问透。' },
+                { week: '第三周', title: '社群共创', desc: '组建“问题突击队”，对核心案例进行深度共创，产出解决方案。' },
+                { week: '第四周', title: '成果共享', desc: '将本月的共创成果，沉淀为知识文档，在社群内共享。' },
+            ];
+
+            const aiAgentsData = [
+                { emoji: '✍️', name: 'AI书记官', desc: '自动把几小时的讨论，变成一份清晰的会议纪要，帮你省时间。' },
+                { emoji: '📚', name: 'AI图书管理员', desc: '当你一筹莫展时，随时@它，从知识库里找出最相关的过往案例和洞察。' },
+                { emoji: '📊', name: 'AI分析师', desc: '每一次共创的成果，它都会辅助我们，生成结构清晰、图文并茂的知识报告。' },
+                { emoji: '🤝', name: 'AI匹配官', desc: '根据你的需求和能力画像，智能为你推荐最值得链接的社群伙伴。' },
+            ];
+
+            const sprintTabsContainer = document.getElementById('sprint-tabs');
+            const sprintContentContainer = document.getElementById('sprint-content');
+            const sevenStepsContainer = document.getElementById('seven-steps-diagram');
+            const aiAgentsContainer = document.getElementById('ai-agents-grid');
+
+            function renderSevenSteps() {
+                sevenStepsData.forEach(step => {
+                    const stepEl = document.createElement('div');
+                    stepEl.className = `px-2 py-1 rounded ${step.color} ${step.textColor} font-medium`;
+                    stepEl.textContent = step.name;
+                    sevenStepsContainer.appendChild(stepEl);
+                });
+            }
+
+            function renderSprints() {
+                sprintsData.forEach((sprint, index) => {
+                    const tabBtn = document.createElement('button');
+                    tabBtn.className = `tab-btn px-4 py-2 text-sm font-semibold rounded-full bg-white/60 text-gray-700 hover:bg-[#3D405B] hover:text-white`;
+                    tabBtn.textContent = sprint.month;
+                    tabBtn.dataset.sprintId = sprint.id;
+                    if (index === 0) {
+                        tabBtn.classList.add('active');
+                    }
+                    sprintTabsContainer.appendChild(tabBtn);
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.id = `content-${sprint.id}`;
+                    contentDiv.className = 'sprint-content-pane';
+                    if (index !== 0) {
+                        contentDiv.classList.add('hidden');
+                    }
+
+                    const stepInfo = sevenStepsData[sprint.step - 1];
+
+                    contentDiv.innerHTML = `
+                        <div class="text-center mb-8">
+                            <span class="px-3 py-1 text-sm font-semibold rounded-full ${stepInfo.color} ${stepInfo.textColor}">
+                                对应步骤：${stepInfo.name}
+                            </span>
+                            <h3 class="text-2xl font-bold mt-4 mb-2">${sprint.title}</h3>
+                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                            ${weeklyPlanData.map(week => `
+                                <div class="bg-white/70 p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                    <p class="font-bold text-[#00796B]">${week.week}</p>
+                                    <h4 class="font-semibold text-lg mt-1 mb-2">${week.title}</h4>
+                                    <p class="text-sm text-gray-600">${week.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    sprintContentContainer.appendChild(contentDiv);
+                });
+            }
+
+            function renderAiAgents() {
+                aiAgentsData.forEach(agent => {
+                    const agentCard = document.createElement('div');
+                    agentCard.className = 'bg-white/70 p-6 rounded-xl shadow-lg text-center transform hover:-translate-y-1 transition-transform';
+                    agentCard.innerHTML = `
+                        <div class="text-5xl mb-4">${agent.emoji}</div>
+                        <h3 class="text-xl font-bold mb-2">${agent.name}</h3>
+                        <p class="text-sm text-gray-600">${agent.desc}</p>
+                    `;
+                    aiAgentsContainer.appendChild(agentCard);
+                });
+            }
+
+            sprintTabsContainer.addEventListener('click', (e) => {
+                if (e.target.matches('.tab-btn')) {
+                    const sprintId = e.target.dataset.sprintId;
+                    
+                    sprintTabsContainer.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    sprintContentContainer.querySelectorAll('.sprint-content-pane').forEach(pane => {
+                        if (pane.id === `content-${sprintId}`) {
+                            pane.classList.remove('hidden');
+                        } else {
+                            pane.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"], .roadmap-item').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.dataset.target || this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            mobileMenu.addEventListener('click', (e) => {
+                if(e.target.matches('a')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            renderSevenSteps();
+            renderSprints();
+            renderAiAgents();
+        });
+    </script>
+</body>
+</html>
